@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Post</title>
+     <style>
+        /* Reset & Base Styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f6f8;
+    color: #2c3e50;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 3rem 1rem;
+    min-height: 100vh;
+}
+
+/* Heading */
+h2 {
+    font-size: 2.5rem;
+    color: #34495e;
+    margin-bottom: 1.5rem;
+}
+
+/* Post Info */
+p {
+    font-size: 1.1rem;
+    margin: 0.5rem 0;
+}
+
+.user {
+    color: #2980b9;
+    font-weight: 500;
+}
+
+/* Form Container */
+form {
+    width: 100%;
+    max-width: 600px;
+    background-color: #fff;
+    padding: 2rem;
+    margin-top: 1rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    display: flex;
+    flex-direction: column;
+}
+
+/* Textarea Styling */
+.content {
+    width: 100%;
+    height: 150px;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    resize: vertical;
+    transition: border-color 0.3s ease;
+}
+
+.content:focus {
+    outline: none;
+    border-color: #3498db;
+    box-shadow: 0 0 0 4px rgba(52, 152, 219, 0.1);
+}
+
+/* Button Styling */
+.btn {
+    align-self: flex-end;
+    background-color: #3498db;
+    color: #fff;
+    padding: 0.7rem 1.5rem;
+    font-size: 1rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    font-weight: bold;
+}
+
+.btn:hover {
+    background-color: #2980b9;
+    transform: scale(1.05);
+}
+
+     </style>
+</head>
+<body>
+    <h2>Edit Your Post</h2>
+    <p>Post id:<%= post.id %></p>
+    <p class="user">Post username:<%= post.username %></p>
+    <form method="post" action="/posts/<%=post.id%>?_method=PATCH">
+        <textarea name="content" class="content"><%= post.content %></textarea>
+        <button class="btn">Submit</button>
+    </form>
+</body>
+</html>
